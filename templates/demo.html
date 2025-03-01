@@ -1,0 +1,53 @@
+<form method="post" action="{% url 'home'%}">
+    {% csrf_token %}
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <fieldset>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required/>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="form-group">
+                    <input type="number" id="number" name="number" placeholder="Mobile Number" required/>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="form-group">
+                   <select class="form-control" name="location" required>
+                      <option value="" disabled selected>Location</option>
+                      <option value="Kochi">Kochi</option>
+                      <option value="Kakkand">Kakkand</option>
+                   </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="form-group">
+                    <textarea rows="4" id="textarea_message" name="textarea_message" class="form-control" placeholder="Your Message..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="form-group">
+                    <div class="center"><button type="submit">Submit</button></div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>      

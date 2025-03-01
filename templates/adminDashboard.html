@@ -1,0 +1,146 @@
+<!-- templates/admin.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e6f7ff; /* Light blue background */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .table {
+            margin-bottom: 30px;
+            background-color: #ffffff; /* White background for tables */
+        }
+        h2, h3 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .btn-container {
+            margin-bottom: 20px;
+        }
+        .btn-edit {
+            background-color: #007bff; /* Blue background for edit button */
+            color: #fff;
+        }
+        .btn-delete {
+            background-color: #ff0000; /* Red background for delete button */
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center my-4">Admin Panel</h2>
+        <h3 class="text-primary">Ambulance Bookings</h3>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Number</th>
+                    <th>Location</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.name }}</td>
+                    <td>{{ booking.number }}</td>
+                    <td>{{ booking.location }}</td>
+                    <td>{{ booking.textarea_message }}</td>
+                    <td>{{ booking.status }}</td>
+                    <td>
+                        <button type="button" class="btn btn-edit btn-sm" data-toggle="modal" data-target="#editBookingModal{{ booking.id }}">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <form method="post" class="d-inline-block">
+                            {% csrf_token %}
+                            <input type="hidden" name="delete_booking" value="{{ booking.id }}">
+                            <button type="submit" class="btn btn-delete btn-sm">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <!-- Edit Booking Modal -->
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3 class="text-primary">Messages</h3>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message in messages %}
+                <tr>
+                    <td>{{ message.name }}</td>
+                    <td>{{ message.email }}</td>
+                    <td>{{ message.phone }}</td>
+                    <td>{{ message.subject }}</td>
+                    <td>{{ message.message }}</td>
+                    <td>{{ message.status }}</td>
+                    <td>
+                        <button type="button" class="btn btn-edit btn-sm" data-toggle="modal" data-target="#editMessageModal{{ message.id }}">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <form method="post" class="d-inline-block">
+                            {% csrf_token %}
+                            <input type="hidden" name="delete_message" value="{{ message.id }}">
+                            <button type="submit" class="btn btn-delete btn-sm">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <!-- Edit Message Modal -->
+                <div class="modal fade" id="editMessageModal{{ message.id }}" tabindex="-1" aria-labelledby="editMessageLabel{{ message.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit Message</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" name="edit_message" value="{{ message.id }}">
+                                    <!-- Other form fields for editing message -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

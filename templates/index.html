@@ -1,0 +1,569 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- Site Metas -->
+   <title>Life Care </title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- Site Icons -->
+   <link rel="shortcut icon" href="{% static 'images/fevicon.ico.png' %}" type="image/x-icon" />
+   <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon.png' %}">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <!-- Site CSS -->
+   <link rel="stylesheet" href="{% static 'style.css' %}">
+   <!-- Colors CSS -->
+   <link rel="stylesheet" href="{% static 'css/colors.css' %}">
+   <!-- ALL VERSION CSS -->
+   <link rel="stylesheet" href="{% static 'css/versions.css' %}">
+   <!-- Responsive CSS -->
+   <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+   <!-- Modernizer for Portfolio -->
+   <script src="{% static 'js/modernizer.js' %}"></script>
+   <!-- [if lt IE 9] -->
+   </head>
+   <body class="clinic_version">
+      <!-- LOADER -->
+      <div id="preloader">
+         <img class="preloader" src="{% static 'images/loaders/heart-loading2.gif' %}" alt="">
+      </div>
+      <!-- END LOADER -->
+      <header>
+         <div class="header-top wow fadeIn">
+            <div class="container">
+               <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="image"></a>
+               <div class="right-header">
+                  <div class="header-info">
+                     <div class="info-inner">
+                        <span class="icontop"><img src="{% static 'images/phone-icon.png' %}" alt="#"></span>
+                        <span class="iconcont"><a href="tel:800 123 456">800 123 4560</a></span>	
+                     </div>
+                     <div class="info-inner">
+                        <span class="icontop"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <span class="iconcont"><a data-scroll href="mailto:info@yoursite.com">info@Lifecare.com</a></span>	
+                     </div>
+                     <div class="info-inner">
+                        <span class="icontop"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                        <span class="iconcont"><a data-scroll href="#">Daily:24/7</a></span>	
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="header-bottom wow fadeIn">
+            <div class="container">
+               <nav class="main-menu">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                  </div>
+
+                  <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                         <li class="{% if request.path == '/' %}active{% endif %}">
+                             <a href="{% url 'home' %}">Home</a>
+                         </li>
+                         <li><a data-scroll href="#about">About us</a></li>
+                         <li><a data-scroll href="#service">Services</a></li>
+                         <li><a data-scroll href="#testimonials">Review</a></li>
+                         <li><a data-scroll href="#getintouch">Contact</a></li>
+                 
+                        {% if user.is_authenticated %}
+                              <!-- Show the Profile link when the user is logged in -->
+                           <li><a href="{% url 'profile' %}">Profile</a></li>
+                              <!-- Show the Logout link when the user is logged in -->
+                           <li><a href="#service">Booking</a></li>
+
+                           <li><a href="{% url 'logout' %}">Logout</a></li>
+                     
+                              <!-- Show the admin link only for admins -->
+         
+                        {% else %}
+                              <!-- Show the Login link when the user is not logged in -->
+                           <li><a href="{% url 'login' %}">Login to Book</a></li>
+                        {% endif %}
+
+                           <!-- Optionally, display the username at the top left -->
+                           <li style="font-size: 26px; color: rgb(221, 221, 235) ;padding:7px;font-weight: 800;">👤 {{ user.username }}</li>
+
+                     
+                       </ul>
+                       
+                 </div>
+               </nav>
+               {% comment %} <div class="serch-bar">
+                  <div id="custom-search-input">
+                     <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Search" />
+                        <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                        </span>
+                     </div>
+                  </div>
+               </div> {% endcomment %}
+            </div>
+         </div>
+      </header>
+      <div id="home" class="parallax first-section wow fadeIn" data-stellar-background-ratio="0.4" style="background-image:url('{% static 'images/slider-bg.jpg' %}');">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 col-sm-12">
+                  <div class="text-contant">
+                     <h2>
+                        <span class="center"><span class="icon"><img src="{% static 'images/icon-logo.png' %}" alt="#" /></span></span>
+                        <a href="" class="typewrite" data-period="2000" data-type='[ "Welcome to Life Care" ]'>
+                        <span class="wrap"></span>
+                        </a>
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <!-- end row -->
+         </div>
+         <!-- end container -->
+      </div>
+      <!-- end section -->
+      <div id="time-table" class="time-table-section">
+         <div class="container">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+               <div class="row">
+                  <div class="service-time one" style="background:#2895f1;">
+                     <span class="info-icon"><i class="fa fa-ambulance" aria-hidden="true"></i></span>
+                     <h3>Emergency Case</h3>
+                     <p>"LifeCare provides swift,reliable ambulance services during emergencies,connecting you to immediate medical support when every second counts."</p>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+               <div class="row">
+                  <div class="service-time middle" style="background:#0071d1;">
+                     <span class="info-icon"><i class="fa fa-clock-o" aria-hidden="true"></i></span> 
+                     <h3>Working Hours</h3>
+                     <div class="time-table-section">
+                        <p>"LifeCare operates 24/7,ensuring immediate ambulance services at any time,day or night.We’re always ready to respond in case of emergencies, whenever you need us."</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+               <div class="row">
+                  <div class="service-time three" style="background:#0060b1;">
+                     <span class="info-icon"><i class="fa fa-hospital-o" aria-hidden="true"></i></span>
+                     <h3>Hospitals</h3>
+                     <p>"LifeCare works closely with top hospitals to ensure seamless and immediate medical attention during emergencies.Our network of trusted healthcare facilities ."</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div id="about" class="section wow fadeIn">
+         <div class="container">
+            <div class="heading">
+               <span class="icon-logo"><img src="{% static 'images/icon-logo.png' %}" alt="#"></span>
+               <h2>The Specialist Clinic</h2>
+            </div>
+            <!-- end title -->
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="message-box">
+                     <h4>What We Do</h4>
+                     <p class="lead">At LifeCare, we connect patients to a network of trusted specialist clinics for expert medical care. Whether it’s a need for specialized consultations, diagnostics, or treatments, we ensure timely and safe transportation to the right clinic. Our goal is to provide quick access to top-tier healthcare services, ensuring the best possible outcomes for patients in need of specialized medical attention.</p>
+                     <p>At LifeCare, we provide fast, reliable ambulance services for medical emergencies. Our platform connects you to nearby ambulances, ensuring rapid response times and safe transportation to the best healthcare facilities. Whether you’re in need of urgent medical care, transportation for a loved one, or emergency support, LifeCare is here to help—24/7.  </p>
+                     <a href="#services" data-scroll class="btn btn-light btn-radius btn-brd grd1 effect-1">Learn More</a>
+                  </div>
+                  <!-- end messagebox -->
+               </div>
+               <!-- end col -->
+               <div class="col-md-6">
+                  <div class="post-media wow fadeIn">
+                     <img src="{% static 'images/about 111.jpg '%}" alt="" class="img-responsive">
+                     <a href="https://youtu.be/Nfb3Ji9Ng78?si=oS5Iwu78FCmAxUH6" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>
+                  </div>
+                  <!-- end media -->
+               </div>
+               <!-- end col -->
+            </div>
+            <!-- end row -->
+            <hr class="hr1">
+            <div class="row">
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="{% static 'images/Paramedics.jpg' %}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img src="{% static 'images/Paramedics.jpg' %}" alt="" class="img-responsive">
+                     </div>
+                     <h3>Paramedics</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="{% static 'images/Critical Care Nurses.jpg' %}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img src="{% static 'images/Critical Care Nurses.jpg' %}" alt="" class="img-responsive">
+                     </div>
+                     <h3>Critical Care Nurses</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="{% static 'images/Respiratory Therapists.jpg' %}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img src="{% static 'images/Respiratory Therapists.jpg' %}" alt="" class="img-responsive">
+                     </div>
+                     <h3>Respiratory Therapists</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="{% static 'images/clinic_01.jpg' %}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img src="{% static 'images/clinic_01.jpg' %}" alt="" class="img-responsive">
+                     </div>
+                     <h3> Mobile ICU</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+            </div>
+            <!-- end row -->
+         </div>
+         <!-- end container -->
+      </div>
+      <div id="service" class="services wow fadeIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+                  <div class="inner-services">
+                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="serv">
+                          
+                           <h4>Emergency Ambulance Response</h4>
+                           <p>Immediate dispatch of ambulances to respond to life-threatening emergencies, providing timely medical intervention during critical situations.</p>
+                        </div>
+                     </div>
+                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="serv">
+                          
+                           <h4>ICU Ambulance (Mobile ICU)</h4>
+                           <p>Equipped with life support systems and staffed with critical care specialists to transport patients requiring intensive care during emergency transfers.</p>
+                        </div>
+                     </div>
+                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="serv">
+                          
+                           <h4>Non-Emergency Medical Transport</h4>
+                           <p>Safe and comfortable transport for patients needing routine medical care, follow-up visits, or scheduled transfers between medical facilities.</p>
+                        </div>
+                     </div>
+                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="serv">
+                           
+                           <h4>Neonatal and Pediatric Transport</h4>
+                           <p>Specialized ambulances equipped to handle infants and children with critical medical conditions, including neonatal intensive care units (NICU) services.</p>
+                        </div>
+                     </div>
+                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="serv">
+                          
+                           <h4>Cardiac Care Ambulance</h4>
+                           <p>Equipped with specialized cardiac equipment, staffed by cardiac care specialists to handle heart-related emergencies such as heart attacks and arrhythmias.</p>
+                        </div>
+                     </div>
+                     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="serv">
+                          
+                           <h4>Trauma and Accident Response</h4>
+                           <p>Immediate dispatch of ambulances with trauma specialists for accidents, severe injuries, and other traumatic events requiring quick and expert care.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {% if user.is_authenticated %}
+               <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <div class="appointment-form">
+                     <h3>Booking </h3>
+                     <div class="form">
+                        {% comment %} forms{% endcomment %}
+                        <form method="post" action="{% url 'home' %}">
+                           {% csrf_token %}
+                           {% if messages %}
+                           <div class="messages">
+                               {% for message in messages %}
+                                   <div class="alert alert-{{ message.tags }}">
+                                       {{ message }}
+                                   </div>
+                               {% endfor %}
+                           </div>
+                           {% endif %}
+                           <fieldset>
+                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                   <div class="row">
+                                       <div class="form-group">
+                                           <input type="text" id="name" name="name" placeholder="Your Name" required/>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                   <div class="row">
+                                       <div class="form-group">
+                                           <input type="number" id="number" name="number" placeholder="Mobile Number" required/>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                   <div class="row">
+                                       <div class="form-group">
+                                          <select class="form-control" name="location" required>
+                                             <option value="" disabled selected>Location</option>
+                                             <option value="Kochi">Kochi</option>
+                                             <option value="Kakkand">Kakkand</option>
+                                             <option value="Thrikkakara">Thrikkakara</option>
+                                             <option value="Vypeen">Vypeen</option>
+                                             <option value="Marine Drive">Marine Drive</option>
+                                             <option value="MG Road">MG Road</option>
+                                             <option value="Irumpanam">Irumpanam</option>
+                                             <option value="Palachuvadu">Palachuvadu</option>
+                                             <option value="Mythripuram">Mythripuram</option>
+                                             <option value="Thuthiyur">Thuthiyur</option>
+                                             <option value="Mamangalam">Mamangalam</option>
+                                             <option value="Thrippunithura">Thrippunithura</option>
+                                             <option value="Kalamassery">Kalamassery</option>
+                                             <option value="Perumbavoor">Perumbavoor</option>
+                                             <option value="Aluva">Aluva</option>
+                                             <option value="Maradu">Maradu</option>
+                                             <option value="Angamali">Angamali</option>
+                                             <option value="Eloor">Eloor</option>
+                                             <option value="North Paravur">North Paravur</option>
+                                          </select>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                   <div class="row">
+                                       <div class="form-group">
+                                           <textarea rows="4" id="textarea_message" name="textarea_message" class="form-control" placeholder="Your Message..."></textarea>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                   <div class="row">
+                                       <div class="form-group">
+                                           <div class="center"><button type="submit">Submit</button></div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </fieldset>
+                           {% if request.method == 'POST' %}
+                              <div class="alert alert-info">
+                                    Form was submitted! Method: {{ request.method }}
+                              </div>
+                           {% endif %}
+                       </form>            
+                     </div>
+                  </div>
+               </div>
+               {% endif %}
+            </div>
+         </div>
+      </div>
+      <!-- end section -->
+	  <div id="testimonials" class="section wb wow fadeIn">
+         <div class="container">
+            <div class="heading">
+               <span class="icon-logo"><img src="{% static 'images/icon-logo.png' %}" alt="#"></span>
+               <h2>Review</h2>
+            </div>
+            <!-- end title -->
+            <div class="row">
+               <div class="col-md-6 col-sm-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                  <div class="testimonial clearfix">
+                     <div class="desc">
+                        <h3><i class="fa fa-quote-left"></i> A Lifesaver in Every Sense</h3>
+                        <p class="lead">LifeCare’s ambulance service saved my father’s life during a cardiac emergency. The team was quick, professional, and equipped with everything needed for his care. We’ll always be thankful for their exceptional service.</p>
+                     </div>
+                     <div class="testi-meta">
+                        <img src="{% static 'images/Rahul Sharma.jpg' %}" alt="" class="img-responsive alignleft">
+                        <h4>Rahul Sharma</h4>
+                     </div>
+                     <!-- end testi-meta -->
+                  </div>
+                  <!-- end testimonial -->
+               </div>
+               <!-- end col -->
+               <div class="col-md-6 col-sm-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
+                  <div class="testimonial clearfix">
+                     <div class="desc">
+                        <h3><i class="fa fa-quote-left"></i>Exceptional Pediatric Care</h3>
+                        <p class="lead">I was impressed by the specialized pediatric ambulance service. The staff’s expertise and the advanced equipment onboard ensured my child received the best care during a critical moment. LifeCare truly understands the needs of families.</p>
+                     </div>
+                     <div class="testi-meta">
+                        <img src="{% static 'images/Priya Nair.jpg' %}" alt="" class="img-responsive alignleft">
+                        <h4>Priya Nair</h4>
+                     </div>
+                     <!-- end testi-meta -->
+                  </div>
+                  <!-- end testimonial -->
+               </div>
+               <!-- end col -->
+            </div>
+            <!-- end row -->
+            <hr class="invis">
+            <div class="row">
+               <div class="col-md-6 col-sm-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
+                  <div class="testimonial clearfix">
+                     <div class="desc">
+                        <h3><i class="fa fa-quote-left"></i>"Reliable and Caring Service</h3>
+                        <p class="lead">I used LifeCare for non-emergency transport, and the experience was seamless. The team was punctual, caring, and ensured I felt safe throughout the journey. Highly recommend their services for anyone in need.</p>
+                     </div>
+                     <div class="testi-meta">
+                        {% comment %} ......................................................................... {% endcomment %}
+                        <img src="{% static 'images/John D’Souza.jpg' %}" alt="" class="img-responsive alignleft">
+                        <h4>John D'Souza</h4>
+                     </div>
+                     <!-- end testi-meta -->
+                  </div>
+                  <!-- end testimonial -->
+               </div>
+               <!-- end col -->
+               <div class="col-md-6 col-sm-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
+                  <div class="testimonial clearfix">
+                     <div class="desc">
+                        <h3><i class="fa fa-quote-left"></i>Quick Response, Professional Team</h3>
+                        <p class="lead">During a road accident, LifeCare was on the scene in no time. The trauma specialists stabilized me on-site and transported me safely to the hospital. Their professionalism and compassion made a tough situation more manageable.</p>
+                     </div>
+                     <div class="testi-meta">
+                        <img src="{% static 'images/Anjali Verma.jpg' %}" alt="" class="img-responsive alignleft">
+                        <h4> Anjali Verma</h4>
+                     </div>
+                     <!-- end testi-meta -->
+                  </div>
+                  <!-- end testimonial -->
+               </div>
+               <!-- end col -->
+            </div>
+            <!-- end row -->
+         </div>
+         <!-- end container -->
+      </div>
+      <!-- end section -->
+      <div id="getintouch" class="section wb wow fadeIn" style="padding-bottom:0;">
+         <div class="container">
+            <div class="heading">
+               <span class="icon-logo"><img src="{% static 'images/icon-logo.png' %}" alt="#"></span>
+               <h2>Get in Touch</h2>
+            </div>
+         </div>
+         <div class="contact-section">
+            <div class="form-contant">
+               <form method="POST" action="{% url 'send_message' %}">
+                  {% csrf_token %}
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group in_name">
+                              <input type="text" class="form-control" name="name" placeholder="Name" required="required">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group in_email">
+                              <input type="email" class="form-control" name="email" placeholder="E-mail" required="required">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group in_phone">
+                              <input type="tel" class="form-control" name="phone" placeholder="Phone" required="required">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group in_subject">
+                              <input type="text" class="form-control" name="subject" placeholder="Subject" required="required">
+                          </div>
+                      </div>
+              
+                      <div class="col-md-12">
+                          <div class="form-group in_message"> 
+                              <textarea class="form-control" name="message" rows="5" placeholder="Message" required="required"></textarea>
+                          </div>
+                          <div class="actions">
+                              <input type="submit" value="Send Message" name="submit" id="submitButton" class="btn small" title="Submit Your Message!">
+                          </div>
+                          {% if success_message %}
+                          <script>
+                              alert("{{ success_message }}");
+                          </script>
+                          {% endif %}
+                          {% if error_message %}
+                          <div style="color: red;">{{ error_message }}</div>
+                          {% endif %}
+                      </div>
+                  </div>
+              </form>
+              
+            </div>
+            <div id="googleMap" style="width:100%;height:450px;"></div>
+         </div>
+      </div>
+      <footer id="footer" class="footer-area wow fadeIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="logo padding">
+                     <a href=""><img src="{% static 'images/logo.png' %}" alt=""></a>
+                     <p>LifeCare is a reliable ambulance booking platform offering 24/7 emergency and non-emergency medical transport. With advanced ambulances and skilled professionals, we ensure safe, fast, and compassionate care when you need it most.</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="footer-info padding">
+                     <h3>CONTACT US</h3>
+                     <p><i class="fa fa-map-marker" aria-hidden="true"></i>Cheryl Hill Park, Seaport - Airport Road, Kakkanad 682021, Thrikkakara, Kochi</p>
+                     <p><i class="fa fa-paper-plane" aria-hidden="true"></i> infolifecare@gmail.com</p>
+                     <p><i class="fa fa-phone" aria-hidden="true"></i> (+91) 800 123 4560</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <div class="copyright-area wow fadeIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8">
+                  <div class="footer-text">
+                     <p>© 2025 Lifecare. All Rights Reserved.</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="social">
+                     <ul class="social-links">
+                        <li><a href="https://rss.app/signin"><i class="fa fa-rss"></i></a></li>
+                        <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://x.com/?lang=en-in"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="https://blank.page/"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="https://youtu.be/Z-Hi8aXYo6U?si=o-b9kb5WUuSGR7cZ"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="https://pin.it/9jOY1859W"><i class="fa fa-pinterest"></i></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end copyrights -->
+      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+      <!-- all js files -->
+      <script src="{% static 'js/all.js' %}"></script>
+      <!-- all plugins -->
+      <script src="{% static 'js/custom.js' %}"></script>
+      <!-- map -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNUPWkb4Cjd7Wxo-T4uoUldFjoiUA1fJc&callback=myMap"></script>
+   </body>
+</html>
